@@ -1,6 +1,6 @@
 "use client";
 
-import { FC, useState, useEffect } from "react";
+import { FC, useState } from "react";
 import { useForm, FormProvider } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -142,14 +142,14 @@ const Form = () => {
     clearErrors,
   } = methods;
 
-  const [previousStep, setPreviousStep] = useState(0);
+  // const [previousStep, setPreviousStep] = useState(0);
   const [currentStep, setCurrentStep] = useState(0);
   const [loading, setLoading] = useState(false);
 
   // Watch the fields for the current step
   const currentFields = steps[currentStep].fields;
   // Convert the fields array to an object with the fields as keys
-  const watchedFields = watch(currentFields as FormField[]);
+  // const watchedFields = watch(currentFields as FormField[]);
 
   // Validate and move to next step when fields change
   const validateStep = async () => {
@@ -162,7 +162,7 @@ const Form = () => {
 
     if (isStepValid && currentStep < steps.length - 1) {
       clearErrors(); // Clear any existing errors for the current step
-      setPreviousStep(currentStep);
+      // setPreviousStep(currentStep);
       setCurrentStep(currentStep + 1);
     }
   };
@@ -195,7 +195,7 @@ const Form = () => {
         setLoading(false);
       }
     } else {
-      setPreviousStep(currentStep);
+      // setPreviousStep(currentStep);
       setCurrentStep(currentStep + 1);
     }
   };
@@ -361,6 +361,7 @@ const Form = () => {
               label="Continue"
               variant="primary"
               customClassName="w-full"
+              disabled = {loading}
             />
           </div>
         </form>
