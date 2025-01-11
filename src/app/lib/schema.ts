@@ -15,7 +15,7 @@ const phoneNumberRegExp =
     }),
     fullname: z.string().min(1, {message: "Please enter your full name"}),
     username: z.string().min(1, {message: "Please enter your username"}),
-    email: z.string().min(1, {message: "Please enter your email address"}),
+    email: z.string().email( {message: "Please enter your email address"}),
     storeName: z.string().min(1, {message: "Please enter store name"}),
     storeTagName: z.string().min(1, {message: "Please enter store tag name"}),
     storePhoneNumber: z
@@ -24,7 +24,7 @@ const phoneNumberRegExp =
     .refine((value) => phoneNumberRegExp.test(value), {
       message: "Phone number entered is not valid",
     }),
-    storeEmail: z.string().min(1, {message: "Please enter your email address"}),
+    storeEmail: z.string().email({message: "Please enter your email address"}),
     category: z.string().min(1, {message: "Please select the category"}),
     photo: z
     .instanceof(File) // Ensures the field is a File object

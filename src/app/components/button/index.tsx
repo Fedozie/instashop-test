@@ -16,7 +16,7 @@ const Button: React.FC<ButtonProps> = (props) => {
   const { variant, buttonType, label, customClassName, ...rest } = props;
 
   const className = clsx(
-    "h-auto w-auto flex justify-center items-center py-[0.75rem] px-[2.5rem] text-center font-medium rounded-[6.25rem] cursor-pointer",
+    "h-auto w-auto flex justify-center items-center py-[0.75rem] px-[2.5rem] text-center font-medium rounded-[6.25rem] cursor-pointer disabled:cursor-not-allowed",
     customClassName
   );
 
@@ -25,6 +25,7 @@ const Button: React.FC<ButtonProps> = (props) => {
       className={button({ className, variant })}
       type={buttonType}
       {...rest}
+      
     >
       {label}
     </button>
